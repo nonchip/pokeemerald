@@ -1819,5 +1819,5 @@ const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
 
 #if NONCHIP_HACK
-const u8 gText_NonchipShinyHelper[] = _("Secret ID: {STR_VAR_3}\n{PAUSE_UNTIL_PRESS}");
+const u8 gText_NonchipShinyHelper[] = _("Secret ID: {STR_VAR_3}\nShiny Mult.: {STR_VAR_2}\n{PAUSE_UNTIL_PRESS}");
 #endif
