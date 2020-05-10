@@ -2204,11 +2204,11 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     else
 #if NONCHIP_HACK
     {
-        s32 shinymul = 1 + (GetGameStat(GAME_STAT_ENTERED_HOF) / 3);
+        s32 shinymul = (2+GetGameStat(GAME_STAT_ENTERED_HOF)) / 3;
         u32 shinyValue;
         s32 i;
         value = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
-        for (i = 0; i < shinymul; ++i){
+        for (i = 0; i <= shinymul; ++i){
             personality = Random32();
             shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
             if(shinyValue < SHINY_ODDS)

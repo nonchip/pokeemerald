@@ -1129,7 +1129,7 @@ void ItemUseOutOfBattle_CannotUse(u8 taskId)
 #if NONCHIP_HACK
 void ItemUseOutOfBattle_NonchipShinyHelper(u8 taskId){
     s32 oid = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
-    s32 shinymul = 1 + (GetGameStat(GAME_STAT_ENTERED_HOF) / 3);
+    s32 shinymul = (2+GetGameStat(GAME_STAT_ENTERED_HOF)) / 3;
     ConvertIntToHexStringN(gStringVar3,oid,STR_CONV_MODE_LEADING_ZEROS,8);
     ConvertIntToDecimalStringN(gStringVar2,shinymul,STR_CONV_MODE_RIGHT_ALIGN,3);
     StringExpandPlaceholders(gStringVar4, gText_NonchipShinyHelper);
