@@ -13,6 +13,11 @@
 #include "link.h"
 #include "constants/game_stat.h"
 
+#if NONCHIP_HACK
+#include "constants/items.h"
+#include "item.h"
+#endif
+
 static u16 CalculateChecksum(void *data, u16 size);
 static bool8 DoReadFlashWholeSection(u8 sector, struct SaveSection *section);
 static u8 GetSaveValidStatus(const struct SaveSectionLocation *location);
@@ -671,6 +676,10 @@ u8 HandleSavingData(u8 saveType)
         for (i = SECTOR_ID_HOF_1; i < SECTORS_COUNT; i++)
             EraseFlashSector(i);
     case SAVE_HALL_OF_FAME: // hall of fame.
+#if NONCHIP_HACK
+        if (GetGameStat(GAME_STAT_ENTERED_HOF) == 0)
+            AddBagItem(ITEM_NONCHIP_SHINY_HELPER,1);
+#endif
         if (GetGameStat(GAME_STAT_ENTERED_HOF) < 999)
             IncrementGameStat(GAME_STAT_ENTERED_HOF);
         SaveSerializedGame();

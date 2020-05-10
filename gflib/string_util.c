@@ -272,7 +272,11 @@ u8 *ConvertUIntToDecimalStringN(u8 *dest, u32 value, enum StringConvertMode mode
     return dest;
 }
 
+#if NONCHIP_HACK
 u8 *ConvertIntToHexStringN(u8 *dest, u32 value, enum StringConvertMode mode, u8 n)
+#else
+u8 *ConvertIntToHexStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n)
+#endif
 {
     enum { WAITING_FOR_NONZERO_DIGIT, WRITING_DIGITS, WRITING_SPACES } state;
     u8 i;

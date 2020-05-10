@@ -26,7 +26,11 @@ s32 StringCompareN(const u8 *str1, const u8 *str2, u32 n);
 bool8 IsStringLengthAtLeast(const u8 *str, s32 n);
 u8 *ConvertIntToDecimalStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n);
 u8 *ConvertUIntToDecimalStringN(u8 *dest, u32 value, enum StringConvertMode mode, u8 n);
+#if NONCHIP_HACK
 u8 *ConvertIntToHexStringN(u8 *dest, u32 value, enum StringConvertMode mode, u8 n);
+#else
+u8 *ConvertIntToHexStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n);
+#endif
 u8 *StringExpandPlaceholders(u8 *dest, const u8 *src);
 u8 *StringBraille(u8 *dest, const u8 *src);
 const u8 *GetExpandedPlaceholder(u32 id);
