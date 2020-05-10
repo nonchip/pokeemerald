@@ -2961,4 +2961,8 @@ extern const u8 gText_Smartness[];
 extern const u8 gText_Cuteness[];
 extern const u8 gText_Beauty3[];
 
+#if NONCHIP_HACK
+extern const u8 gText_NonchipShinyHelper[];
+#endif
+
 #endif // GUARD_STRINGS_H

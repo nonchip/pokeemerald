@@ -161,8 +161,13 @@ $(TOOLDIRS):
 	@$(MAKE) -C $@ CC=$(HOSTCC) CXX=$(HOSTCXX)
 
 rom: $(ROM)
+ifeq ($(NONCHIP_HACK),1)
+	@echo "nonchip's hacks enabled!"
+	@echo "run with NONCHIP_HACK=0 to build original rom"
+else
 ifeq ($(COMPARE),1)
 	@$(SHA1) rom.sha1
+endif
 endif
 
 # For contributors to make sure a change didn't affect the contents of the ROM.

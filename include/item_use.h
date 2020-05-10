@@ -34,4 +34,8 @@ void Task_UseDigEscapeRopeOnField(u8 taskId);
 u8 CanUseDigOrEscapeRopeOnCurMap(void);
 u8 CheckIfItemIsTMHMOrEvolutionStone(u16 itemId);
 
+#if NONCHIP_HACK
+void ItemUseOutOfBattle_NonchipShinyHelper(u8);
+#endif
+
 #endif // GUARD_ITEM_USE_H

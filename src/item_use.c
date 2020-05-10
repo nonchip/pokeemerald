@@ -1126,4 +1126,13 @@ void ItemUseOutOfBattle_CannotUse(u8 taskId)
     DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
 }
 
+#if NONCHIP_HACK
+void ItemUseOutOfBattle_NonchipShinyHelper(u8 taskId){
+    s32 oid = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
+    ConvertIntToHexStringN(gStringVar3,oid,STR_CONV_MODE_LEADING_ZEROS,8);
+    StringExpandPlaceholders(gStringVar4, gText_NonchipShinyHelper);
+    DisplayItemMessage(taskId,1, gStringVar4, BagMenu_InitListsMenu);
+}
+#endif
+
 #undef tUsingRegisteredKeyItem

@@ -4884,4 +4884,20 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
+
+#if NONCHIP_HACK
+    [ITEM_NONCHIP_SHINY_HELPER] =
+    {
+        .name = _("SHINY HELPER"),
+        .itemId = ITEM_NONCHIP_SHINY_HELPER,
+        .price = 0,
+        .description = sNonchipShinyHelperDesc,
+        .importance = 1,
+        .unk19 = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_NonchipShinyHelper,
+        .secondaryId = 1,
+    },
+#endif
 };

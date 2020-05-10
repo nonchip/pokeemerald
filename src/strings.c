@@ -1817,3 +1817,7 @@ const u8 gText_Answer[] = _("ANSWER");
 const u8 gText_PokeBalls[] = _("POKé BALLS");
 const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
+
+#if NONCHIP_HACK
+const u8 gText_NonchipShinyHelper[] = _("Secret ID: {STR_VAR_3}\n{PAUSE_UNTIL_PRESS}");
+#endif
