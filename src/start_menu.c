@@ -900,7 +900,7 @@ static void HideSaveInfoWindow(void)
 
 static void SaveStartTimer(void)
 {
-    sSaveDialogTimer = 60;
+    sSaveDialogTimer = 240;
 }
 
 static bool8 SaveSuccesTimer(void)
@@ -977,7 +977,7 @@ static u8 SaveConfirmInputCallback(void)
             sSaveDialogCallback = SaveSavingMessageCallback;
             return SAVE_IN_PROGRESS;
         default:
-            sSaveDialogCallback = SaveFileExistsCallback;
+            sSaveDialogCallback = SaveSavingMessageCallback;
             return SAVE_IN_PROGRESS;
         }
     case -1: // B Button
