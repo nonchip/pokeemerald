@@ -900,7 +900,11 @@ static void HideSaveInfoWindow(void)
 
 static void SaveStartTimer(void)
 {
+#if NONCHIP_HACK
     sSaveDialogTimer = 240;
+#else
+    sSaveDialogTimer = 60;
+#endif
 }
 
 static bool8 SaveSuccesTimer(void)
@@ -977,7 +981,11 @@ static u8 SaveConfirmInputCallback(void)
             sSaveDialogCallback = SaveSavingMessageCallback;
             return SAVE_IN_PROGRESS;
         default:
+#if NONCHIP_HACK
             sSaveDialogCallback = SaveSavingMessageCallback;
+#else
+            sSaveDialogCallback = SaveFileExistsCallback;
+#endif
             return SAVE_IN_PROGRESS;
         }
     case -1: // B Button
