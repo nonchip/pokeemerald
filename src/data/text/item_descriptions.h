@@ -1553,5 +1553,6 @@ static const u8 sOldSeaMapDesc[] = _(
 #if NONCHIP_HACK
 static const u8 sNonchipShinyHelperDesc[] = _(
     "NONCHIP HACK\n"
-    "shiny helper item");
+    "Shows Trainer ID,\n"
+    "Adds Shiny chances.");
 #endif
