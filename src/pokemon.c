@@ -2179,6 +2179,23 @@ void ZeroEnemyPartyMons(void)
         ZeroMonData(&gEnemyParty[i]);
 }
 
+#if NONCHIP_HACK
+u32 shinymult_Personality(void){
+    s32 shinymul = (2+GetGameStat(GAME_STAT_ENTERED_HOF)) / 3;
+    u32 shinyValue;
+    s32 i;
+    u32 value = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
+    u32 personality;
+    for (i = 0; i <= shinymul; ++i){
+        personality = Random32();
+        shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
+        if(shinyValue < SHINY_ODDS)
+            break;
+    }
+    return personality;
+}
+#endif
+
 void CreateMon(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV, u8 hasFixedPersonality, u32 fixedPersonality, u8 otIdType, u32 fixedOtId)
 {
     u32 arg;
@@ -2203,18 +2220,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         personality = fixedPersonality;
     else
 #if NONCHIP_HACK
-    {
-        s32 shinymul = (2+GetGameStat(GAME_STAT_ENTERED_HOF)) / 3;
-        u32 shinyValue;
-        s32 i;
-        value = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
-        for (i = 0; i <= shinymul; ++i){
-            personality = Random32();
-            shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
-            if(shinyValue < SHINY_ODDS)
-                break;
-        }
-    }
+        personality = shinymult_Personality();
 #else
         personality = Random32();
 #endif
@@ -2309,7 +2315,11 @@ void CreateMonWithNature(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV,
 
     do
     {
+#if NONCHIP_HACK
+        personality = shinymult_Personality();
+#else
         personality = Random32();
+#endif
     }
     while (nature != GetNatureFromPersonality(personality));
 
@@ -2326,7 +2336,11 @@ void CreateMonWithGenderNatureLetter(struct Pokemon *mon, u16 species, u8 level,
 
         do
         {
+#if NONCHIP_HACK
+            personality = shinymult_Personality();
+#else
             personality = Random32();
+#endif
             actualLetter = ((((personality & 0x3000000) >> 18) | ((personality & 0x30000) >> 12) | ((personality & 0x300) >> 6) | (personality & 0x3)) % 28);
         }
         while (nature != GetNatureFromPersonality(personality)
@@ -2337,7 +2351,11 @@ void CreateMonWithGenderNatureLetter(struct Pokemon *mon, u16 species, u8 level,
     {
         do
         {
+#if NONCHIP_HACK
+            personality = shinymult_Personality();
+#else
             personality = Random32();
+#endif
         }
         while (nature != GetNatureFromPersonality(personality)
             || gender != GetGenderFromSpeciesAndPersonality(species, personality));
@@ -2355,7 +2373,11 @@ void CreateMaleMon(struct Pokemon *mon, u16 species, u8 level)
     do
     {
         otId = Random32();
+#if NONCHIP_HACK
+        personality = shinymult_Personality();
+#else
         personality = Random32();
+#endif
     }
     while (GetGenderFromSpeciesAndPersonality(species, personality) != MON_MALE);
     CreateMon(mon, species, level, 32, 1, personality, OT_ID_PRESET, otId);
