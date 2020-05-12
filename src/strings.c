@@ -1401,6 +1401,25 @@ const u8 gText_3rd[] = _("3rd");
 const u8 gText_4th[] = _("4th");
 const u8 gText_Friend[] = _("Friend");
 const u8 gText_Pokemon3[] = _("POKeMON"); // Unused
+#if NONCHIP_HACK
+const u8 gJPText_MysteryGift[] = _("Mystery Gift");
+const u8 gJPText_DecideStop[] = _("{A_BUTTON}Decide {B_BUTTON}Stop");
+const u8 gJPText_ReceiveMysteryGiftWithEReader[] = _("Mystery Gift from eReader");
+const u8 gJPText_SelectConnectFromEReaderMenu[] = _("Select Connect on eReader");
+const u8 gJPText_SelectConnectWithGBA[] = _("Select Connect With GBA on eReader");
+const u8 gJPText_SelectConnectAndPressA[] = _("Select Connect and press A"); // Unused
+const u8 gJPText_LinkIsIncorrect[] = _("Wrong Connection");
+const u8 gJPText_CardReadingHasBeenHalted[] = _("Card reading interrupted");
+const u8 gJPText_UnableConnectWithEReader[] = _("Can't connect with eReader"); // Unused
+const u8 gJPText_Connecting[] = _("Connecting");
+const u8 gJPText_ConnectionErrorCheckLink[] = _("Link error, check connection");
+const u8 gJPText_ConnectionErrorTryAgain[] = _("Link error, try again"); // Link error
+const u8 gJPText_AllowEReaderToLoadCard[] = _("Please read card into eReader");
+const u8 gJPText_ConnectionComplete[] = _("Connection successful!");
+const u8 gJPText_NewTrainerHasComeToHoenn[] = _("A new Trainer has come to Hoenn!");
+const u8 gJPText_PleaseWaitAMoment[] = _("Please Wait...");
+const u8 gJPText_WriteErrorUnableToSaveData[] = _("Unable to save data!");
+#else
 const u8 gJPText_MysteryGift[] = _("ふしぎなもらいもの");
 const u8 gJPText_DecideStop[] = _("{A_BUTTON}けってい {B_BUTTON}やめる");
 const u8 gJPText_ReceiveMysteryGiftWithEReader[] = _("カードeリーダー{PLUS}　で\nふしぎなもらいものを　よみこみます");
@@ -1418,6 +1437,7 @@ const u8 gJPText_ConnectionComplete[] = _("つうしん　しゅうりょう！"
 const u8 gJPText_NewTrainerHasComeToHoenn[] = _("あらたな　トレーナーが\nホウエンに　やってきた！");
 const u8 gJPText_PleaseWaitAMoment[] = _("しばらく　おまちください");
 const u8 gJPText_WriteErrorUnableToSaveData[] = _("かきこみ　エラー　です\nデータが　ほぞん　できませんでした");
+#endif
 const u8 gText_Red[] = _("RED");
 const u8 gText_Blue[] = _("BLUE");
 const u8 gText_3Dashes[] = _("---"); // Unused
