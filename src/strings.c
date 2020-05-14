@@ -1401,7 +1401,7 @@ const u8 gText_3rd[] = _("3rd");
 const u8 gText_4th[] = _("4th");
 const u8 gText_Friend[] = _("Friend");
 const u8 gText_Pokemon3[] = _("POKeMON"); // Unused
-#if NONCHIP_HACK
+#if NONCHIP_HACK & 4
 const u8 gJPText_MysteryGift[] = _("Mystery Gift");
 const u8 gJPText_DecideStop[] = _("{A_BUTTON}Decide {B_BUTTON}Stop");
 const u8 gJPText_ReceiveMysteryGiftWithEReader[] = _("Mystery Gift from eReader");
@@ -1838,6 +1838,6 @@ const u8 gText_PokeBalls[] = _("POKé BALLS");
 const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
 
-#if NONCHIP_HACK
+#if NONCHIP_HACK & 8
 const u8 gText_NonchipShinyHelper[] = _("Trainer ID: {STR_VAR_3}\nShiny Mult.: {STR_VAR_2}\n{PAUSE_UNTIL_PRESS}");
 #endif

@@ -1550,7 +1550,7 @@ static const u8 sOldSeaMapDesc[] = _(
     "that shows the way\n"
     "to a certain island.");
 
-#if NONCHIP_HACK
+#if NONCHIP_HACK & 8
 static const u8 sNonchipShinyHelperDesc[] = _(
     "NONCHIP HACK\n"
     "Shows Trainer ID,\n"

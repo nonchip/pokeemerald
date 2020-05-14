@@ -170,9 +170,6 @@ static const struct MenuAction gPCText_ItemPCOptionsText[] =
 static const struct ItemSlot gNewGamePCItems[] =
 {
     { ITEM_POTION, 1 },
-#if NONCHIP_HACK
-    //{ITEM_NONCHIP_SHINY_HELPER, 1},
-#endif
     { ITEM_NONE, 0 }
 };
 

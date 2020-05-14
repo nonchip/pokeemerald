@@ -85,6 +85,9 @@ void EnableVCountIntrAtLine150(void);
 
 void AgbMain()
 {
+#if NONCHIP_HACK & 32
+    u32 seed;
+#endif
 #if MODERN
     // Modern compilers are liberal with the stack on entry to this function,
     // so RegisterRamReset may crash if it resets IWRAM.
@@ -118,6 +121,11 @@ void AgbMain()
     CheckForFlashMemory();
     InitMainCallbacks();
     InitMapMusic();
+#if NONCHIP_HACK & 32
+    seed = RtcGetMinuteCount();
+    seed = (seed >> 16) ^ (seed & 0xFFFF);
+    SeedRng(seed);
+#endif
     ClearDma3Requests();
     ResetBgs();
     SetDefaultFontsPointer();

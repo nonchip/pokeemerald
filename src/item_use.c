@@ -1126,7 +1126,7 @@ void ItemUseOutOfBattle_CannotUse(u8 taskId)
     DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
 }
 
-#if NONCHIP_HACK
+#if NONCHIP_HACK & 8
 void ItemUseOutOfBattle_NonchipShinyHelper(u8 taskId){
     s32 oid = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
     s32 shinymul = (2+GetGameStat(GAME_STAT_ENTERED_HOF)) / 3;

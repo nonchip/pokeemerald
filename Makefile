@@ -36,7 +36,7 @@ GAME_CODE   := BPEE
 MAKER_CODE  := 01
 REVISION    := 0
 MODERN      ?= 0
-NONCHIP_HACK?= 1
+NONCHIP_HACK?= 255
 
 SHELL := /bin/bash -o pipefail
 
@@ -161,8 +161,26 @@ $(TOOLDIRS):
 	@$(MAKE) -C $@ CC=$(HOSTCC) CXX=$(HOSTCXX)
 
 rom: $(ROM)
-ifeq ($(NONCHIP_HACK),1)
-	@echo "nonchip's hacks enabled!"
+ifneq ($(NONCHIP_HACK),0)
+	@echo "nonchip's hacks enabled: $(NONCHIP_HACK)"
+ifneq ($(shell echo $$(( $(NONCHIP_HACK) & 1 ))),0)
+	@echo "  1 - disable overwrite save confirmation dialog"
+endif
+ifneq ($(shell echo $$(( $(NONCHIP_HACK) & 2 ))),0)
+	@echo "  2 - extend the post-save timer to 4 seconds to accomodate slow flashcarts"
+endif
+ifneq ($(shell echo $$(( $(NONCHIP_HACK) & 4 ))),0)
+	@echo "  4 - enable mystery event and ereader with mystery gift"
+endif
+ifneq ($(shell echo $$(( $(NONCHIP_HACK) & 8 ))),0)
+	@echo "  8 - enable shiny helper item"
+endif
+ifneq ($(shell echo $$(( $(NONCHIP_HACK) & 16 ))),0)
+	@echo " 16 - enable RTC reset menu"
+endif
+ifneq ($(shell echo $$(( $(NONCHIP_HACK) & 32 ))),0)
+	@echo " 32 - enable RTC based RNG seeding"
+endif
 	@echo "run with NONCHIP_HACK=0 to build original rom"
 else
 ifeq ($(COMPARE),1)

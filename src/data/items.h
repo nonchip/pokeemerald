@@ -4885,7 +4885,7 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-#if NONCHIP_HACK
+#if NONCHIP_HACK & 8
     [ITEM_NONCHIP_SHINY_HELPER] =
     {
         .name = _("SHINY HELPER"),

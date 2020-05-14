@@ -735,7 +735,7 @@ static void Task_TitleScreenPhase3(u8 taskId)
         SetMainCallback2(CB2_GoToClearSaveDataScreen);
     }
     else if ((gMain.heldKeys & RESET_RTC_BUTTON_COMBO) == RESET_RTC_BUTTON_COMBO
-#if !(NONCHIP_HACK)
+#if !(NONCHIP_HACK & 16)
       && CanResetRTC() == TRUE
 #endif
     )

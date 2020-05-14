@@ -646,7 +646,7 @@ static void Task_MainMenuCheckSaveFile(u8 taskId)
             case SAVE_STATUS_OK:
                 tMenuType = HAS_SAVED_GAME;
                 if (IsMysteryGiftEnabled())
-#if NONCHIP_HACK
+#if NONCHIP_HACK & 4
                     tMenuType+=2;
 #else
                     tMenuType++;
@@ -663,7 +663,7 @@ static void Task_MainMenuCheckSaveFile(u8 taskId)
                 gTasks[taskId].func = Task_WaitForSaveFileErrorWindow;
                 tMenuType = HAS_SAVED_GAME;
                 if (IsMysteryGiftEnabled() == TRUE)
-#if NONCHIP_HACK
+#if NONCHIP_HACK & 4
                     tMenuType+=2;
 #else
                     tMenuType++;

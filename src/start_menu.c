@@ -900,7 +900,7 @@ static void HideSaveInfoWindow(void)
 
 static void SaveStartTimer(void)
 {
-#if NONCHIP_HACK
+#if NONCHIP_HACK & 2
     sSaveDialogTimer = 240;
 #else
     sSaveDialogTimer = 60;
@@ -981,7 +981,7 @@ static u8 SaveConfirmInputCallback(void)
             sSaveDialogCallback = SaveSavingMessageCallback;
             return SAVE_IN_PROGRESS;
         default:
-#if NONCHIP_HACK
+#if NONCHIP_HACK & 1
             sSaveDialogCallback = SaveSavingMessageCallback;
 #else
             sSaveDialogCallback = SaveFileExistsCallback;

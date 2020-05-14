@@ -13,7 +13,7 @@
 #include "link.h"
 #include "constants/game_stat.h"
 
-#if NONCHIP_HACK
+#if NONCHIP_HACK & 8
 #include "constants/items.h"
 #include "item.h"
 #endif
@@ -676,7 +676,7 @@ u8 HandleSavingData(u8 saveType)
         for (i = SECTOR_ID_HOF_1; i < SECTORS_COUNT; i++)
             EraseFlashSector(i);
     case SAVE_HALL_OF_FAME: // hall of fame.
-#if NONCHIP_HACK
+#if NONCHIP_HACK & 8
         if (GetGameStat(GAME_STAT_ENTERED_HOF) == 0)
             AddBagItem(ITEM_NONCHIP_SHINY_HELPER,1);
 #endif
