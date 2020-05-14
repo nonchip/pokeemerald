@@ -75,6 +75,11 @@ static EWRAM_DATA u16 gTrainerId = 0;
 static void UpdateLinkAndCallCallbacks(void);
 static void InitMainCallbacks(void);
 static void CallCallbacks(void);
+
+#if NONCHIP_HACK & 32
+static void SeedRngWithRtc(void);
+#endif
+
 static void ReadKeys(void);
 void InitIntrHandlers(void);
 static void WaitForVBlank(void);
@@ -82,11 +87,17 @@ void EnableVCountIntrAtLine150(void);
 
 #define B_START_SELECT (B_BUTTON | START_BUTTON | SELECT_BUTTON)
 
+#if NONCHIP_HACK & 32
+static void SeedRngWithRtc(void)
+{
+    u32 seed = RtcGetMinuteCount();
+    seed = (seed >> 16) ^ (seed & 0xFFFF);
+    SeedRng(seed);
+}
+#endif
+
 void AgbMain()
 {
-#if NONCHIP_HACK & 32
-    u32 seed;
-#endif
 #if MODERN
     // Modern compilers are liberal with the stack on entry to this function,
     // so RegisterRamReset may crash if it resets IWRAM.
@@ -121,9 +132,7 @@ void AgbMain()
     InitMainCallbacks();
     InitMapMusic();
 #if NONCHIP_HACK & 32
-    seed = RtcGetMinuteCount();
-    seed = (seed >> 16) ^ (seed & 0xFFFF);
-    SeedRng(seed);
+    SeedRngWithRtc();
 #endif
     ClearDma3Requests();
     ResetBgs();
