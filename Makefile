@@ -36,7 +36,7 @@ GAME_CODE   := BPEE
 MAKER_CODE  := 01
 REVISION    := 0
 MODERN      ?= 0
-NONCHIP_HACK?= 255
+NONCHIP_HACK?= 31
 
 SHELL := /bin/bash -o pipefail
 
@@ -181,7 +181,6 @@ endif
 ifneq ($(shell echo $$(( $(NONCHIP_HACK) & 32 ))),0)
 	@echo " 32 - enable RTC based RNG seeding"
 endif
-	@echo "run with NONCHIP_HACK=0 to build original rom"
 else
 ifeq ($(COMPARE),1)
 	@$(SHA1) rom.sha1

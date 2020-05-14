@@ -1,14 +1,14 @@
 # my hacks
 
-everything enabled by default, select by appending `NONCHIP_HACK=<bitmask>` to the `make` command line.
+the `numbers` designate bitflags, bold ones are enabled by default, select by appending `NONCHIP_HACK=<bitmask>` to the `make` command line.
 
-* `1` disabled "Do you want to overwrite an existing save?" dialog
-* `2` extended the timer on "You saved the game." to 4 seconds (my flash cartridge takes some additional time to copy the saved data to an SD card)
-* `4` enabled the Japanese-only "Mystery Event" and "Mystery Gift over eReader" (with rough english translation) features (they unlock with the normal "Mystery Gift" by putting "LINK TOGETHER WITH ALL" in the PokeMart questionnaire)
-* `8` Added a "Shiny Helper" item you get after beating Elite 4
+* **`1`** disabled "Do you want to overwrite an existing save?" dialog
+* **`2`** extended the timer on "You saved the game." to 4 seconds (my flash cartridge takes some additional time to copy the saved data to an SD card)
+* **`4`** enabled the Japanese-only "Mystery Event" and "Mystery Gift over eReader" (with rough english translation) features (they unlock with the normal "Mystery Gift" by putting "LINK TOGETHER WITH ALL" in the PokeMart questionnaire)
+* **`8`** Added a "Shiny Helper" item you get after beating Elite 4
   * this tells you your complete Trainer ID (including the secret part)
   * and it gives you an additional chance at any encountered pokemon being shiny per every 3 times you beat Elite 4 (after the 1st time you get 2 chances per encounter, after the 4th you get 3, ...)
-* `16` enabled the RTC reset menu (Select+Left+B on title screen)
+* **`16`** enabled the RTC reset menu (Select+Left+B on title screen)
 * `32` fixed the startup sequence to seed the RNG from the RTC
 
 # Pokémon Emerald
